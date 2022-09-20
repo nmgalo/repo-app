@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "RepoApp"
-include ':app'
+include(":app")
