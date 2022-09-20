@@ -9,9 +9,4 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
-
-    <style name="Theme.RepoApp.Loading">
-        <item name="android:windowBackground">@drawable/bkg_launch_screen</item>
-    </style>
-
 </resources>
