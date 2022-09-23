@@ -18,5 +18,6 @@
     <style name="Theme.RepoApp.Repository">
         <item name="title">@string/repository</item>
         <item name="navigationIcon">@drawable/ic_arrow_back</item>
+        <item name="menu">@menu/repository_menu</item>
     </style>
 </resources>

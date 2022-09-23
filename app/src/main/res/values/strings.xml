@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Github Search</string>
     <string name="search">Search</string>
+    <string name="star">Star</string>
     <string name="repository">Repository</string>
     <string name="error">An error occurred, please try again later</string>
+    <string name="user_profile_image">User Profile Image</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import dev.nmgalo.repo.databinding.SearchRepoItemBinding
+import dev.nmgalo.repo.presentation.repo.Repo
 
 
 class RepoListAdapter : ListAdapter<Repo, RepoListAdapter.ViewHolder>(DiffUtilCallback()) {

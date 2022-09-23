@@ -1,6 +1,6 @@
 package dev.nmgalo.repo.data
 
-import dev.nmgalo.repo.data.model.search.SearchReposResponse
+import dev.nmgalo.repo.data.model.search.RepoDetailDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -12,8 +12,11 @@ interface GithubNetworkApi {
         @Path("userName") userName: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ): List<SearchReposResponse>
+    ): List<RepoDetailDTO>
 
     @GET("repos/{owner}/{name}")
-    suspend fun getRepos(@Path("owner") owner: String, @Path("name") name: String): Nothing
+    suspend fun getRepo(
+        @Path("owner") owner: String,
+        @Path("name") name: String
+    ): RepoDetailDTO
 }

@@ -2,7 +2,7 @@ package dev.nmgalo.repo.data
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dev.nmgalo.repo.BuildConfig
-import dev.nmgalo.repo.data.model.search.SearchReposResponse
+import dev.nmgalo.repo.data.model.search.RepoDetailDTO
 import dev.nmgalo.repo.domain.search.model.SearchReposRequest
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
@@ -41,11 +41,15 @@ class GithubNetworkClient @Inject constructor(json: Json) : GithubNetworkDataSou
         .build()
         .create(GithubNetworkApi::class.java)
 
-    override suspend fun getUserRepositories(searchReposRequest: SearchReposRequest): List<SearchReposResponse> {
+    override suspend fun getUserRepositories(searchReposRequest: SearchReposRequest): List<RepoDetailDTO> {
         return networkApi.userRepositories(
             userName = searchReposRequest.userName,
             page = searchReposRequest.page,
             perPage = searchReposRequest.perPage
         )
+    }
+
+    override suspend fun getRepositoryDetails(owner: String, name: String): RepoDetailDTO {
+        return networkApi.getRepo(owner, name)
     }
 }

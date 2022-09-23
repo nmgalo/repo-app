@@ -6,6 +6,7 @@ import dev.nmgalo.repo.data.common.AppDispatchers
 import dev.nmgalo.repo.data.common.Dispatcher
 import dev.nmgalo.repo.domain.search.GetUserRepositoriesUseCase
 import dev.nmgalo.repo.presentation.common.BaseViewModel
+import dev.nmgalo.repo.presentation.repo.Repo
 import dev.nmgalo.repo.presentation.utils.toUIModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -50,9 +51,9 @@ class SearchViewModel @Inject constructor(
             _loading.value = true
             getUserRepositoriesUseCase.get(searchQuery, page, PER_PAGE).let {
                 _searchResultStateFlow.value += it.map { item ->
-                    item.toUIModel { repoId ->
+                    item.toUIModel { owner, name ->
                         SearchFragmentDirections
-                            .actionSearchFragmentToRepoDetailsFragment(repoId)
+                            .actionSearchFragmentToRepoDetailsFragment(owner, name)
                             .navigate()
                     }
                 }

@@ -1,4 +1,4 @@
-package dev.nmgalo.repo.presentation.search
+package dev.nmgalo.repo.presentation.repo
 
 data class Repo(
     val id: Long,
