@@ -18,9 +18,9 @@
   navigation drawer.
 * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) class is
   designed to store and manage UI-related data in a lifecycle conscious way.
-* [Glide](https://github.com/bumptech/glide)  is a fast and efficient open source media management
-  and image loading framework for Android that wraps media decoding, memory and disk caching, and
-  resource pooling into a simple and easy to use interface.
+* [coil](https://coil-kt.github.io/coil/)  An image loading library for Android backed by Kotlin
+  Coroutines. Coil is: Fast: Coil performs a number of optimizations including memory and disk
+  caching
 
 ## Preview
 
@@ -28,6 +28,17 @@
     <img src="./preview/1.png" alt="App Screenshot" width="49%" />
     <img src="./preview/2.png" alt="App Screenshot" width="49%" />
 </p>
+
+## Installation
+
+Clone project to Android Studio
+
+Copy `local.defaults.properties` to `secrets.properties` file and fill credentials.
+
+With command
+
+- In Linux/Mac - `cp local.defaults.properties secrets.properties`
+- Windows -  `copy local.defaults.properties secrets.properties`
 
 ## Goals and requirements
 
