@@ -9,4 +9,5 @@ interface RepoRepository {
     suspend fun saveToFavourites(repo: RepoDetails)
     suspend fun removeFromFavourites(repo: RepoDetails)
     suspend fun findRepoByAuthorAndRepoName(owner: String, name: String): Flow<RepoDetails?>
+    suspend fun getAllFavouriteRepos(): List<RepoDetails>
 }

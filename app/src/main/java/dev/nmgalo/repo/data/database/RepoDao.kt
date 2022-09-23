@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RepoDao {
-    @Query("SELECT * FROM repo")
+    @Query("SELECT * FROM repo ORDER BY id DESC")
     fun getAll(): List<RepoEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

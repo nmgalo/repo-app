@@ -35,4 +35,8 @@ class RepoRepositoryImpl @Inject constructor(
 
     override suspend fun findRepoByAuthorAndRepoName(owner: String, name: String) =
         repoDao.findRepoByAuthorAndRepoName(owner, name).map { it?.toDomainModel() }
+
+    override suspend fun getAllFavouriteRepos(): List<RepoDetails> {
+        return repoDao.getAll().map { it.toDomainModel() }
+    }
 }
