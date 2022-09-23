@@ -25,8 +25,8 @@
 ## Preview
 
 <p align="center" width="100%">
-    <img src="./preview/1.png" alt="App Screenshot" width="50%" />
-    <img src="./preview/2.png" alt="App Screenshot" width="50%" />
+    <img src="./preview/1.png" alt="App Screenshot" width="49%" />
+    <img src="./preview/2.png" alt="App Screenshot" width="49%" />
 </p>
 
 ## Goals and requirements
