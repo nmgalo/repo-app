@@ -1,10 +1,13 @@
 package dev.nmgalo.repo.presentation.repo
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import coil.load
 import coil.transform.CircleCropTransformation
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,8 +24,12 @@ import javax.inject.Inject
 class RepoDetailsFragment @Inject constructor(
 
 ) : BaseFragment<RepoViewModel>(R.layout.fragment_repo_details) {
+
     override val viewModel: RepoViewModel by viewModels()
     private var binding by autoCleared<FragmentRepoDetailsBinding>()
+    private val args: RepoDetailsFragmentArgs by navArgs()
+
+    private lateinit var starMenu: MenuItem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,8 +61,19 @@ class RepoDetailsFragment @Inject constructor(
         }
 
         toolbar.root.setNavigationOnClickListener { viewModel.popBackStack() }
-        toolbar.root.menu.findItem(R.id.star).setOnMenuItemClickListener {
+
+        starMenu = toolbar.root.menu.findItem(R.id.star)
+        starMenu.setOnMenuItemClickListener {
+            viewModel.saveToFavourites(args.owner, args.name)
             true
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.isFavourite.collectLatest {
+                starMenu.icon =
+                    if (it) getDrawable(requireContext(), R.drawable.ic_star_filled) else
+                        getDrawable(requireContext(), R.drawable.ic_star)
+            }
         }
     }
 }
