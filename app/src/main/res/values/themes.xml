@@ -9,4 +9,14 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
+
+    <style name="Theme.RepoApp.Search">
+        <item name="title">@string/search</item>
+        <item name="menu">@menu/search_menu</item>
+    </style>
+
+    <style name="Theme.RepoApp.Repository">
+        <item name="title">@string/repository</item>
+        <item name="navigationIcon">@drawable/ic_arrow_back</item>
+    </style>
 </resources>
