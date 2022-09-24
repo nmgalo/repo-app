@@ -28,4 +28,9 @@ class FavouritesFragment : BaseFragment<FavouritesViewModel>(R.layout.fragment_f
             viewModel.favouritesState.collect(adapter::submitList)
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.get()
+    }
 }

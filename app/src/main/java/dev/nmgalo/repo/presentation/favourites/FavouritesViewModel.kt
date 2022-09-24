@@ -15,24 +15,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavouritesViewModel @Inject constructor(
-    @Dispatcher(AppDispatchers.IO)
-    private val ioDispatcher: CoroutineDispatcher,
+    @Dispatcher(AppDispatchers.IO) private val ioDispatcher: CoroutineDispatcher,
     private val getFavouriteReposUseCase: GetFavouriteReposUseCase
 ) : BaseViewModel() {
 
     private val _favouritesState = MutableStateFlow<List<FavouritesUIModel>>(emptyList())
     val favouritesState = _favouritesState.asStateFlow()
 
-    init {
+    fun get() {
         viewModelScope.launch(ioDispatcher) {
-            _favouritesState.value =
-                getFavouriteReposUseCase.execute().map {
-                    it.toFavouritesUIModel { owner, repositoryName ->
-                        FavouritesFragmentDirections
-                            .actionFavouritesFragmentToRepoDetailsFragment(owner, repositoryName)
-                            .navigate()
-                    }
+            _favouritesState.value = getFavouriteReposUseCase.execute().map {
+                it.toFavouritesUIModel { owner, repositoryName ->
+                    FavouritesFragmentDirections
+                        .actionFavouritesFragmentToRepoDetailsFragment(owner, repositoryName)
+                        .navigate()
                 }
+            }
         }
     }
 }
