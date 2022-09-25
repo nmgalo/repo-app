@@ -61,7 +61,7 @@ and [UI layer](https://developer.android.com/jetpack/guide/ui-layer).
 
 ## UI
 
-As I don't want to make this project experimental, i decided to use well-known XML Based layouts.
+As I don't want to make this project experimental, I decided to use well-known XML Based layouts.
 What can I say? I'm still studying jetpack compose ;))
 
 ## Things to improve
