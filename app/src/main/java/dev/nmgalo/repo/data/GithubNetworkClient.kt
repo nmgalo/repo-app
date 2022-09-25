@@ -2,6 +2,7 @@ package dev.nmgalo.repo.data
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dev.nmgalo.repo.BuildConfig
+import dev.nmgalo.repo.data.common.interceptor.AuthInterceptor
 import dev.nmgalo.repo.data.model.search.RepoDetailDTO
 import dev.nmgalo.repo.domain.search.model.SearchReposRequest
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -20,22 +21,17 @@ class GithubNetworkClient @Inject constructor(json: Json) : GithubNetworkDataSou
     private val networkApi = Retrofit.Builder()
         .baseUrl("https://api.github.com/")
         .client(
-            OkHttpClient.Builder()
-                .addInterceptor(
-                    HttpLoggingInterceptor().apply {
-                        setLevel(HttpLoggingInterceptor.Level.BODY)
-                    }
-                )
-                .addInterceptor { chain ->
-                    chain.proceed(
-                        chain
-                            .request()
-                            .newBuilder()
-                            .addHeader("Authorization", "Bearer ${BuildConfig.GITHUB_API_KEY}")
-                            .build()
+            OkHttpClient.Builder().run {
+                if (BuildConfig.DEBUG) {
+                    addInterceptor(
+                        HttpLoggingInterceptor().apply {
+                            setLevel(HttpLoggingInterceptor.Level.BODY)
+                        }
                     )
                 }
-                .build()
+                addInterceptor(AuthInterceptor())
+                build()
+            }
         )
         .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .build()
