@@ -1,7 +1,7 @@
 package dev.nmgalo.repo.domain.search.model
 
 data class RepoDetails(
-    val author: String,
+    val owner: String,
     val avatar: String,
     val repositoryName: String
 )

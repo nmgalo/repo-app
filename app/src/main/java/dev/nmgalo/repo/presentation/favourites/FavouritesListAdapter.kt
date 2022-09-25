@@ -26,7 +26,7 @@ class FavouritesListAdapter :
         fun onBind(repo: FavouritesUIModel) {
             binding.root.setOnClickListener { repo.onClick() }
             binding.authorProfileImage.load(repo.avatar)
-            binding.authorName.text = repo.userName
+            binding.authorName.text = repo.owner
             binding.repositoryName.text = repo.repositoryName
         }
     }

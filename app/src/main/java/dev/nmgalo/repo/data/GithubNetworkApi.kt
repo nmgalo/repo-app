@@ -7,9 +7,9 @@ import retrofit2.http.Query
 
 interface GithubNetworkApi {
 
-    @GET("users/{userName}/repos")
+    @GET("users/{owner}/repos")
     suspend fun userRepositories(
-        @Path("userName") userName: String,
+        @Path("owner") owner: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): List<RepoDetailDTO>

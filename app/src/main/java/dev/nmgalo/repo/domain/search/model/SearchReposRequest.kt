@@ -1,7 +1,7 @@
 package dev.nmgalo.repo.domain.search.model
 
 data class SearchReposRequest(
-    val userName: String,
+    val owner: String,
     val page: Int,
     val perPage: Int
 )
