@@ -43,7 +43,7 @@ class GithubNetworkClient @Inject constructor(json: Json) : GithubNetworkDataSou
 
     override suspend fun getUserRepositories(searchReposRequest: SearchReposRequest): List<RepoDetailDTO> {
         return networkApi.userRepositories(
-            userName = searchReposRequest.userName,
+            owner = searchReposRequest.owner,
             page = searchReposRequest.page,
             perPage = searchReposRequest.perPage
         )

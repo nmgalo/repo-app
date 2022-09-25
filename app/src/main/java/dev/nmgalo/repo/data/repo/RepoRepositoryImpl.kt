@@ -6,7 +6,6 @@ import dev.nmgalo.repo.data.database.RepoEntity
 import dev.nmgalo.repo.data.search.mappers.toDomainModel
 import dev.nmgalo.repo.domain.repo.RepoRepository
 import dev.nmgalo.repo.domain.search.model.RepoDetails
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -22,7 +21,7 @@ class RepoRepositoryImpl @Inject constructor(
     override suspend fun saveToFavourites(repo: RepoDetails) {
         repoDao.insert(
             RepoEntity(
-                author = repo.author,
+                author = repo.owner,
                 avatar = repo.avatar,
                 repositoryName = repo.repositoryName
             )
@@ -30,7 +29,7 @@ class RepoRepositoryImpl @Inject constructor(
     }
 
     override suspend fun removeFromFavourites(repo: RepoDetails) {
-        repoDao.deleteByOwnerAndName(owner = repo.author, name = repo.repositoryName)
+        repoDao.deleteByOwnerAndName(owner = repo.owner, name = repo.repositoryName)
     }
 
     override suspend fun findRepoByAuthorAndRepoName(owner: String, name: String) =

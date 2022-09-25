@@ -6,16 +6,16 @@ import dev.nmgalo.repo.presentation.repo.Repo
 
 fun RepoDetails.toUIModel(onClick: (String, String) -> Unit) = Repo(
     id = this.repositoryName.hashCode().toLong(),
-    userName = this.author,
+    owner = this.owner,
     avatar = this.avatar,
     repositoryName = this.repositoryName,
-    onClick = { onClick(this.author, this.repositoryName) }
+    onClick = { onClick(this.owner, this.repositoryName) }
 )
 
 fun RepoDetails.toFavouritesUIModel(onClick: (String, String) -> Unit) = FavouritesUIModel(
     id = this.repositoryName.hashCode().toLong(),
-    userName = this.author,
+    owner = this.owner,
     avatar = this.avatar,
     repositoryName = this.repositoryName,
-    onClick = { onClick(this.author, this.repositoryName) }
+    onClick = { onClick(this.owner, this.repositoryName) }
 )

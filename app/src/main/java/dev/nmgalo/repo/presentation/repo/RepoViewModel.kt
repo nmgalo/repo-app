@@ -12,7 +12,8 @@ import dev.nmgalo.repo.presentation.common.BaseViewModel
 import dev.nmgalo.repo.presentation.utils.getValue
 import dev.nmgalo.repo.presentation.utils.toUIModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

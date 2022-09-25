@@ -5,13 +5,13 @@ import dev.nmgalo.repo.data.model.search.RepoDetailDTO
 import dev.nmgalo.repo.domain.search.model.RepoDetails
 
 fun RepoDetailDTO.toDomainModel() = RepoDetails(
-    author = this.owner.login,
+    owner = this.owner.login,
     avatar = this.owner.avatarURL,
     repositoryName = this.name
 )
 
 fun RepoEntity.toDomainModel() = RepoDetails(
-    author = this.author,
+    owner = this.author,
     avatar = this.avatar,
     repositoryName = this.repositoryName
 )

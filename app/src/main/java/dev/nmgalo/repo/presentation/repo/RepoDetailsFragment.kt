@@ -50,7 +50,7 @@ class RepoDetailsFragment @Inject constructor(
                     is RepoState.Success -> {
                         loader.hide()
                         repoGroup.isVisible = true
-                        repositoryOwnerName.text = it.data.userName
+                        repositoryOwnerName.text = it.data.owner
                         repositoryName.text = it.data.repositoryName
                         userProfileImageView.load(it.data.avatar) {
                             transformations(CircleCropTransformation())

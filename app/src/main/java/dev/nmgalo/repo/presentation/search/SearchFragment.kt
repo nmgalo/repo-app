@@ -10,7 +10,11 @@ import dev.nmgalo.repo.R
 import dev.nmgalo.repo.databinding.FragmentSearchBinding
 import dev.nmgalo.repo.databinding.SearchViewBinding
 import dev.nmgalo.repo.presentation.common.BaseFragment
-import dev.nmgalo.repo.presentation.utils.*
+import dev.nmgalo.repo.presentation.utils.AdapterScrollListener
+import dev.nmgalo.repo.presentation.utils.autoCleared
+import dev.nmgalo.repo.presentation.utils.hide
+import dev.nmgalo.repo.presentation.utils.show
+import dev.nmgalo.repo.presentation.utils.textChanges
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
