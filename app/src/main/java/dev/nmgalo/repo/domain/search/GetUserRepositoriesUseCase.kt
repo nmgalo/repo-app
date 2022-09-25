@@ -7,6 +7,11 @@ import javax.inject.Inject
 class GetUserRepositoriesUseCase @Inject constructor(
     private val repo: SearchRepository,
 ) {
-    suspend fun get(userName: String, page: Int, perPage: Int): List<RepoDetails> =
-        repo.search(SearchReposRequest(userName, page, perPage))
+
+    private var searchKeyword: String = ""
+
+    suspend fun get(owner: String, page: Int, perPage: Int): List<RepoDetails> {
+        searchKeyword = owner
+        return repo.search(SearchReposRequest(searchKeyword, page, perPage))
+    }
 }
